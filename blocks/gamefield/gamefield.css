@@ -1,0 +1,11 @@
+.gamefield {
+  margin: 0 auto;
+  font-family: 'Roboto';
+  font-weight: 500;
+  max-width: 55%;
+  background: #001E26;
+  box-shadow: -6.43951px 1.72546px 13.3333px rgba(0, 8, 10, 0.4115), inset 2.70459px -0.724693px 2.8px #02252E, inset -2.70459px 0.724693px 2.8px #022E39;
+  border-radius: 25px;
+  padding: 25px;
+  margin-bottom: 4vw;
+}

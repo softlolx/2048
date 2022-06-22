@@ -1,0 +1,26 @@
+.board__btn {
+  width: 15%;
+  min-width: 60px;
+  height: 100%;
+  padding: 0;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  background: #001E26;
+  box-shadow: -6.43951px 1.72546px 13.3333px rgba(0, 8, 10, 0.4115), inset 2.70459px -0.724693px 2.8px #02252E, inset -2.70459px 0.724693px 2.8px #022E39;
+  background-size: 45% 45%;
+  background-position: 51% 54%;
+  background-repeat: no-repeat;
+  transition: opacity .3s;
+  cursor: pointer;
+}
+
+.board__btn:hover {
+  opacity: .7;
+}
+
+.board__btn:after {
+  content:'';
+  display: block;
+  padding-bottom: 100%;
+}
