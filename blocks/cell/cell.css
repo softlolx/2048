@@ -1,13 +1,13 @@
 .cell {
-  background: #021A20;
+  background: #021a20;
   border-radius: 10px;
-  width: 25%;
-  height: 25%;
+  width: 90px;
+  height: 90px;
   position: relative;
 }
 
-.cell:after {
+/* .cell:after {
   content: "";
   display: block;
   padding-bottom: 100%;
-}
+} */

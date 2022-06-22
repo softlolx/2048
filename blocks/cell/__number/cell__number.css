@@ -1,15 +1,16 @@
 .cell__number {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  width: 90px;
+  height: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  z-index: 2;
-  font-size: 4.3vw;
   color: #fff;
-  line-height: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .cell__number {
+    width: 60px;
+    height: 60px;
+  }
 }
