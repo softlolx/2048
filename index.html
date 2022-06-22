@@ -31,7 +31,68 @@
         </p>
         <button type="button" class="start-button">Start a game</button>
       </div>
-      <div class="board"></div>
+      <div class="board board_hidden">
+        <div class="gamefield">
+          <div class="row">
+            <div class="cell">
+              <div class="cell__number cell__number_2">2</div>
+            </div>
+            <div class="cell">
+              <div class="cell__number cell__number_4">4</div>
+            </div>
+            <div class="cell">
+              <div class="cell__number cell__number_8">8</div>
+            </div>
+            <div class="cell">
+              <div class="cell__number cell__number_16">16</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="cell">
+              <div class="cell__number cell__number_32">32</div>
+            </div>
+            <div class="cell">
+              <div class="cell__number cell__number_64">64</div>
+            </div>
+            <div class="cell">
+              <div class="cell__number cell__number_128">128</div>
+            </div>
+            <div class="cell">
+              <div class="cell__number cell__number_256">256</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="cell">
+              <div class="cell__number cell__number_512">512</div>
+            </div>
+            <div class="cell">
+              <div class="cell__number cell__number_1024">1024</div>
+            </div>
+            <div class="cell">
+              <div class="cell__number cell__number_2048">2048</div>
+            </div>
+            <div class="cell"></div>
+          </div>
+          <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+          </div>
+        </div>
+        <div class="board__text">
+          <div class="board__text-info">
+            Press any key
+          </div>
+          <div class="board__text-score">
+            to start
+          </div>
+        </div>
+        <div class="board__btns">
+          <button class="board__btn board__btn_info"></button>
+          <button class="board__btn board__btn_reset"></button>
+        </div>
+      </div>
     </main>
     <script src="./scripts/index.js"></script>
   </body>
