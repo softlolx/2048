@@ -3,19 +3,21 @@ const rulesBlock = document.querySelector(".rules");
 const boardBlock = document.querySelector(".board");
 const gamefield = document.querySelector(".gamefield");
 const actualScore = document.querySelector("#actual-score");
+const buttonInfo = document.querySelector(".board__btn_info");
+const buttonReset = document.querySelector(".board__btn_reset");
 
 function openGame() {
-  rulesBlock.classList.add("rules_hidden");
-  boardBlock.classList.remove("board_hidden");
+  rulesBlock.classList.toggle("rules_hidden");
+  boardBlock.classList.toggle("board_hidden");
 }
 
 let actScore = 0;
 
 let board = [
-  [0, 0, 0, 2],
-  [0, 0, 0, 0],
-  [0, 0, 0, 0],
-  [0, 0, 0, 0],
+  [4, 2, 4, 2],
+  [2, 0, 2, 8],
+  [64, 32, 4, 256],
+  [16, 256, 16, 8],
 ];
 
 function clearBoard() {
@@ -26,6 +28,19 @@ function addScore(score) {
   actScore += score;
 
   actualScore.innerHTML = actScore;
+}
+
+function loose() {
+  alert("u lost");
+  openGame();
+  resetGame();
+}
+
+function checkForLoose() {
+  let checker = board[0].concat(board[1], board[2], board[3]);
+  if (!checker.includes(0)) {
+    loose();
+  }
 }
 
 function generateRandomCell() {
@@ -40,17 +55,30 @@ function generateRandomCell() {
 function generateBoard() {
   clearBoard();
   generateRandomCell();
+  checkForLoose();
 
   board.forEach((row, rowNum) => {
     row.forEach((column, colNum) => {
       let cell = document.createElement("div");
       cell.classList.add("cell", "cell__number");
-      cell.id = `${rowNum}${colNum}`;
+      // cell.id = `${rowNum}${colNum}`;
       cell.classList.add(`cell__number_${column}`);
       cell.textContent = column;
       gamefield.append(cell);
     });
   });
+}
+
+function resetGame() {
+  board = [
+    [0, 0, 0, 2],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+  ];
+  generateBoard();
+  actScore = 0;
+  addScore(0);
 }
 
 function removeZeroes(row) {
@@ -144,7 +172,13 @@ function moveCellsDown() {
 
 startButton.addEventListener("click", () => {
   openGame();
-  generateBoard();
+  resetGame();
+});
+
+buttonReset.addEventListener("click", resetGame);
+buttonInfo.addEventListener("click", () => {
+  openGame();
+  resetGame();
 });
 
 document.addEventListener("keyup", (evt) => {
