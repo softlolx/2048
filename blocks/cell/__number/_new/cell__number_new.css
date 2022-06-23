@@ -1,0 +1,4 @@
+.cell__number_new {
+  transform: scale(1);
+  transition: transform .25s ease;
+}

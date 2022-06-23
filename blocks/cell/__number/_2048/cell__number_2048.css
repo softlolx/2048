@@ -1,4 +1,5 @@
 .cell__number_2048 {
   background: #AB391D;
   font-size: 3.2vw;
+  transform: scale(1);
 }

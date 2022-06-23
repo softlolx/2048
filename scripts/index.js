@@ -1,10 +1,13 @@
 const startButton = document.querySelector(".start-button");
 const rulesBlock = document.querySelector(".rules");
 const boardBlock = document.querySelector('.board');
+const gameField = document.querySelector('.gamefield');
 
 const openGame = () => {
   rulesBlock.classList.add('rules_hidden');
   boardBlock.classList.remove('board_hidden');
+  generateBoard()
+  console.log(gameField)
 }
 
 startButton.addEventListener("click", openGame);
@@ -16,15 +19,71 @@ let board = [
   [0, 0, 0, 0]
 ]
 
-let b
-let board2 = [
-  Array.from(document.querySelector('#row-1').children),
-  Array.from(document.querySelector('#row-2').children),
-  Array.from(document.querySelector('#row-3').children),
-  Array.from(document.querySelector('#row-4').children)
-]
+let numbers = []
 
-console.log(board2)
+const generateBoard = () => {
+  for (let i = 0; i < 16; i++) {
+    let cell = document.createElement('div');
+    cell.classList.add('cell');
+    let number = document.createElement('div');
+    number.classList.add(`cell__number`);
+    number.textContent = '';
+    cell.appendChild(number)
+    gameField.append(cell)
+  }
+
+  let arr = Array.from(gameField.querySelectorAll('.cell__number'));
+  while (arr.length > 0) {
+    numbers.push(arr.splice(0, 4))
+  }
+  console.log(numbers[0])
+}
+
+
+const updateBoard = () => {
+  for (let i = 0; i < board.length; i++) {
+    for (let k = 0; k < board[i].length; k++) {
+      numbers[k][i].classList.remove(`cell__number_${board[k][i]}`)
+      numbers[k][i].textContent = board[k][i]
+      if (numbers[k][i].textContent == 0) {
+        numbers[k][i].textContent = '';
+        numbers[k][i].className = 'cell__number'
+      } else {
+        numbers[k][i].classList.add(`cell__number_${board[k][i]}`)
+        numbers[k][i].classList.add(`cell__number_position_${board.indexOf(board[k])}_${board.indexOf(board[i])}`)
+      }     
+    }
+  }
+}
+
+/* const updateBoard = () => {
+  let arr = Array.from(gameField.querySelectorAll('.cell__number'));
+  let numbers = []
+  while (arr.length > 0) {
+    numbers.push(arr.splice(0, 4))
+  }
+  console.log(numbers)  
+  numbers.forEach(row => {
+    row.forEach(column => {
+      column.classList.add(`cell__number_${2}`);
+      column.textContent = column;
+    })
+  })
+
+  board.forEach((row) => {
+    row.forEach(column => {
+      let numbers = Array.from(gameField.querySelectorAll('.cell__number'));
+      numbers.forEach(number => {
+        if (number === column) {
+          
+        }
+
+      })
+    })
+  })
+} */
+
+/* console.log(board2) */
 
 const fillZero = (el, method) => {
   while (el.length < 4) {
@@ -64,9 +123,11 @@ const moveDown = () => {
 
   finalRow = finalRow.map(el => {
     el = filterEmpty(el)
+    el.reverse()
     updateParams(el)
     el = filterEmpty(el)
-    fillZero(el, 'unshift')
+    fillZero(el, 'push')
+    el.reverse()
     return el
   })
   for (let i = 0; i < finalRow.length; i++) {
@@ -91,6 +152,7 @@ const moveLeft = () => {
     return el
   });
   console.log(board)
+  console.log(numbers)
 }
 
 const moveUp = () => {
@@ -130,12 +192,14 @@ const moveUp = () => {
 const moveRight = () => {
   board = board.map(el => {
     el = filterEmpty(el)
+    el.reverse()
     updateParams(el)
     el = filterEmpty(el)
-    fillZero(el, 'unshift')
-
+    fillZero(el, 'push')
+    el.reverse()
     return el
   });
+
   console.log(board)
 }
 
@@ -162,26 +226,36 @@ const appendRandom = () => {
   }
 
   board[arr][el] = 2
+  numbers[arr][el].classList.add('cell__number_new')
+  console.log(numbers[arr][el])
 }
 
 
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowUp') {
+    e.preventDefault()
     moveUp()
     appendRandom()
+    updateBoard()
   }
   if (e.key === 'ArrowDown') {
+    e.preventDefault()
     moveDown()
     appendRandom()
+    updateBoard()
   }
   if (e.key === 'ArrowLeft') {
+    e.preventDefault()
     moveLeft()
     appendRandom()
+    updateBoard()
   }
   if (e.key === 'ArrowRight') {
-    moveRight()
+    e.preventDefault()
+    moveRight() 
     appendRandom()
+    updateBoard()
   }
 })
 
@@ -191,6 +265,21 @@ document.addEventListener('keydown', (e) => {
 
 
 
+
+/* function generateBoard() {
+  gameField.innerHTML = ''
+  board.forEach((row, rowNum) => {
+    row.forEach((column, colNum) => {
+      let cell = document.createElement('div');
+      cell.classList.add('cell');
+      let number = document.createElement('div');
+      number.classList.add(`cell__number_${column}`);
+      number.textContent = column;
+      cell.appendChild(number)
+      gameField.append(cell);
+    });
+  });
+} */
 
 
 // narabotki

@@ -29,3 +29,4 @@
 @import url(../blocks/board/__btn/board__btn.css);
 @import url(../blocks/board/__btn/_info/board__btn_info.css);
 @import url(../blocks/board/__btn/_reset/board__btn_reset.css);
+@import url(../blocks/cell/__number/_new/cell__number_new.css)

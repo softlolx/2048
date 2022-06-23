@@ -1,4 +1,5 @@
 .cell__number_1024 {
   background: #A84924;
   font-size: 3.2vw;
+  transform: scale(1);
 }
