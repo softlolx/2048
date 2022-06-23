@@ -1,27 +1,26 @@
 const startButton = document.querySelector(".start-button");
 const rulesBlock = document.querySelector(".rules");
 const boardBlock = document.querySelector(".board");
+const gamefield = document.querySelector(".gamefield");
 
 function openGame() {
   rulesBlock.classList.add("rules_hidden");
   boardBlock.classList.remove("board_hidden");
 }
 
-const gamefield = document.querySelector(".gamefield");
-
-// [0, 0, 0, 0],
-// [0, 0, 0, 0],
-// [0, 0, 0, 0],
-// [0, 0, 0, 0],
-
 let board = [
-  [2, 2, 0, 0],
-  [4, 4, 0, 0],
-  [0, 0, 0, 0],
+  [2, 2, 2, 2],
+  [16, 4, 4, 8],
+  [0, 2, 2, 0],
   [0, 0, 0, 0],
 ];
 
-function generateBoard(newoard) {
+function clearBoard() {
+  gamefield.innerHTML = "";
+}
+
+function generateBoard() {
+  clearBoard();
   board.forEach((row, rowNum) => {
     row.forEach((column, colNum) => {
       let cell = document.createElement("div");
@@ -34,26 +33,48 @@ function generateBoard(newoard) {
   });
 }
 
+function removeZeroes(row) {
+  let noZeroesRow = row.filter((cell) => cell !== 0);
+  return noZeroesRow;
+}
+
+function swipe(row) {
+  noZeroesRow = removeZeroes(row);
+
+  for (let i = 0; i < noZeroesRow.length - 1; i++) {
+    if (noZeroesRow[i] == noZeroesRow[i + 1]) {
+      noZeroesRow[i] *= 2;
+      noZeroesRow[i + 1] = 0;
+    }
+  }
+
+  noZeroesRow = removeZeroes(noZeroesRow);
+
+  for (let i = noZeroesRow.length; i < 4; i++) {
+    noZeroesRow.push(0);
+  }
+
+  return noZeroesRow;
+}
+
 function moveCellsLeft() {
-  //remove zeroes from each row
   board.forEach((row, rowNum) => {
-    let newRow = row.filter((cell) => cell !== 0);
+    let newRow = swipe(row);
     board[rowNum] = newRow;
   });
 
-  //THERE must be a function that checks for similar cells and doubles it if so, changing the second cell to zero
+  generateBoard();
+}
 
-  // function that removes zeroes again (that must be a global func)
-
-  //get zeroes back
-
+function moveCellsRight() {
   board.forEach((row, rowNum) => {
-    for (let i = row.length; i < 4; i++) {
-      row.push(0);
-    }
+    row.reverse();
+    let newRow = swipe(row);
+    newRow.reverse();
+    board[rowNum] = newRow;
   });
 
-  console.log(board);
+  generateBoard();
 }
 
 startButton.addEventListener("click", () => {
@@ -64,6 +85,8 @@ startButton.addEventListener("click", () => {
 document.addEventListener("keyup", (evt) => {
   if (evt.key == "ArrowLeft") {
     moveCellsLeft();
+  } else if (evt.key == "ArrowRight") {
+    moveCellsRight();
   }
 });
 //temp
