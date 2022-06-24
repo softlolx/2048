@@ -5,6 +5,8 @@
   height: auto;
   /* margin-bottom: 2%; */
   position: relative;
+  box-shadow: 0 0 0 rgba(204,169,44, 0.4);
+  /* animation: pulse 5s infinite; */
 }
 
 .cell:not(:first-child) + .cell:not(:nth-child(2)) + .cell:not(:nth-child(3)) + .cell:not(:nth-child(4)) {
@@ -17,4 +19,17 @@
   content: "";
   display: block;
   padding-bottom: 100%;
+}
+
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(250, 249, 248, 0.4);
+  }
+  70% {
+      box-shadow: 0 0 0 1px rgba(221, 219, 210, 0);
+  }
+  100% {
+      box-shadow: 0 0 0 0 rgba(248, 247, 244, 0);
+  }
 }

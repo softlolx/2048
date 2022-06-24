@@ -2,12 +2,18 @@ const startButton = document.querySelector(".start-button");
 const rulesBlock = document.querySelector(".rules");
 const boardBlock = document.querySelector('.board');
 const gameField = document.querySelector('.gamefield');
+const header = document.querySelector('.header')
 
 const openGame = () => {
   rulesBlock.classList.add('rules_hidden');
   boardBlock.classList.remove('board_hidden');
+  header.classList.add('header_active')
   generateBoard()
-  console.log(gameField)
+  setTimeout(() => {
+    appendRandom()
+    appendRandom()
+    updateBoard()
+  }, 500)
 }
 
 startButton.addEventListener("click", openGame);
@@ -31,7 +37,6 @@ const generateBoard = () => {
     cell.appendChild(number)
     gameField.append(cell)
   }
-
   let arr = Array.from(gameField.querySelectorAll('.cell__number'));
   while (arr.length > 0) {
     numbers.push(arr.splice(0, 4))
@@ -49,41 +54,15 @@ const updateBoard = () => {
         numbers[k][i].textContent = '';
         numbers[k][i].className = 'cell__number'
       } else {
+        numbers[k][i].className = 'cell__number'
         numbers[k][i].classList.add(`cell__number_${board[k][i]}`)
-        numbers[k][i].classList.add(`cell__number_position_${board.indexOf(board[k])}_${board.indexOf(board[i])}`)
+        // getting position for animations...
+        /* numbers[k][i].classList.add(`cell__number_position_${board.indexOf(board[k])}_${board.indexOf(board[i])}`) */
       }     
     }
   }
 }
 
-/* const updateBoard = () => {
-  let arr = Array.from(gameField.querySelectorAll('.cell__number'));
-  let numbers = []
-  while (arr.length > 0) {
-    numbers.push(arr.splice(0, 4))
-  }
-  console.log(numbers)  
-  numbers.forEach(row => {
-    row.forEach(column => {
-      column.classList.add(`cell__number_${2}`);
-      column.textContent = column;
-    })
-  })
-
-  board.forEach((row) => {
-    row.forEach(column => {
-      let numbers = Array.from(gameField.querySelectorAll('.cell__number'));
-      numbers.forEach(number => {
-        if (number === column) {
-          
-        }
-
-      })
-    })
-  })
-} */
-
-/* console.log(board2) */
 
 const fillZero = (el, method) => {
   while (el.length < 4) {
@@ -151,8 +130,6 @@ const moveLeft = () => {
 
     return el
   });
-  console.log(board)
-  console.log(numbers)
 }
 
 const moveUp = () => {
@@ -186,7 +163,6 @@ const moveUp = () => {
     newBoard.push(row.splice(0, 4))
   }
   board = newBoard
-  console.dir(board)
 }
 
 const moveRight = () => {
@@ -199,12 +175,11 @@ const moveRight = () => {
     el.reverse()
     return el
   });
-
-  console.log(board)
 }
 
 const appendRandom = () => {
   let arr, el
+
   const randomArr = () => {
     arr = Math.floor(Math.random() * 4);
     return arr
@@ -215,19 +190,20 @@ const appendRandom = () => {
     return el
   }
 
+  const randomNum = () => {
+    el = Math.random() < 0.5 ? 2 : 4;
+    return el
+  }
+
   randomArr()
   randomEl()
 
-  console.log(board[arr][el])
-
-  while(board[arr][el] !== 0) {
-    randomArr()
-    randomEl()
-  }
-
-  board[arr][el] = 2
   numbers[arr][el].classList.add('cell__number_new')
-  console.log(numbers[arr][el])
+  if (board[arr][el] == 0) {
+    board[arr][el] = randomNum()
+  } else {
+    appendRandom()
+  }
 }
 
 
@@ -238,6 +214,7 @@ document.addEventListener('keydown', (e) => {
     moveUp()
     appendRandom()
     updateBoard()
+    console.log(board)
   }
   if (e.key === 'ArrowDown') {
     e.preventDefault()

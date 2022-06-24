@@ -1,4 +1,5 @@
 .header {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -6,11 +7,13 @@
   margin-top: 42px;
   width: calc(100% - 60px);
   min-width: 314px;
+  max-width: 100%;
 
   box-shadow: -6.43951px 1.72546px 13.3333px rgba(0, 8, 10, 0.4115),
     inset 2.70459px -0.724693px 2.8px #02252e,
     inset -2.70459px 0.724693px 2.8px #022e39;
   border-radius: 25px;
+  transition: max-width .5s ease-out;
 }
 
 .header__logo {
@@ -53,4 +56,8 @@
   font-size: 18px;
   line-height: 21px;
   color: #24b685;
+}
+
+.header_active {
+  max-width: 45%;
 }
