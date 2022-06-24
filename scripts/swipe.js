@@ -39,5 +39,6 @@ function handleGesure() {
     moveCellsUp();
   }
   if (touchendY == touchstartY) {
+    console.log("touch");
   }
 }
