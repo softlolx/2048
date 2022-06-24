@@ -1,14 +1,10 @@
 .board {
   font-family: "Raleway";
-  padding-top: 60px;
+  padding-top: 30px;
   width: 100%;
-  padding-bottom: 50px;
+  padding-bottom: 0px;
   visibility: visible;
   opacity: 1;
-
-  /* fixed temporarily to prevent vertical scroll on desctop */
-  position: fixed;
-  top: 80px;
 
   transition: visibility 0.2s, opacity 0.3s linear;
 }
@@ -78,10 +74,10 @@
 }
 
 .board__btn_reset {
-  background-image: url(../../../../images/reset-btn.svg);
+  background-image: url(../../images/reset-btn.svg);
   background-position: 53% 48%;
 }
 
 .board__btn_info {
-  background-image: url(../../../../images/info-btn.svg);
+  background-image: url(../../images/info-btn.svg);
 }
