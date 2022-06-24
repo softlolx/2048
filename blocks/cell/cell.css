@@ -1,13 +1,103 @@
 .cell {
   background: #021a20;
   border-radius: 10px;
-  width: 90px;
-  height: 90px;
-  position: relative;
 }
 
-/* .cell:after {
-  content: "";
-  display: block;
-  padding-bottom: 100%;
-} */
+.cell__number {
+  width: 105px;
+  height: 105px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .cell__number {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+}
+
+.cell__number_2 {
+  background: #24b685;
+}
+
+.cell__number_4 {
+  background: #50aa79;
+}
+
+.cell__number_8 {
+  background: #66a26f;
+}
+
+.cell__number_16 {
+  background: #779a65;
+}
+
+.cell__number_32 {
+  background: #8d8750;
+}
+
+.cell__number_64 {
+  background: #947c46;
+}
+
+.cell__number_128 {
+  background: #9b713d;
+  font-size: 36px;
+}
+
+@media screen and (max-width: 768px) {
+  .cell__number_128 {
+    font-size: 28px;
+  }
+}
+
+.cell__number_256 {
+  background: #a06534;
+  font-size: 36px;
+}
+
+@media screen and (max-width: 768px) {
+  .cell__number_256 {
+    font-size: 28px;
+  }
+}
+
+.cell__number_512 {
+  background: #a5572b;
+  font-size: 36px;
+}
+
+@media screen and (max-width: 768px) {
+  .cell__number_512 {
+    font-size: 28px;
+  }
+}
+
+.cell__number_1024 {
+  background: #a84924;
+  font-size: 36px;
+}
+
+@media screen and (max-width: 768px) {
+  .cell__number_1024 {
+    font-size: 24px;
+  }
+}
+
+.cell__number_2048 {
+  background: #ab391d;
+  font-size: 36px;
+}
+
+@media screen and (max-width: 768px) {
+  .cell__number_2048 {
+    font-size: 24px;
+  }
+}

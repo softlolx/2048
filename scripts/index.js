@@ -1,3 +1,5 @@
+//Make animations, loose screen design, best score counter
+
 const startButton = document.querySelector(".start-button");
 const rulesBlock = document.querySelector(".rules");
 const boardBlock = document.querySelector(".board");
@@ -16,8 +18,8 @@ let actScore = 0;
 let board = [
   [4, 2, 4, 2],
   [2, 0, 2, 8],
-  [64, 32, 4, 256],
-  [16, 256, 16, 8],
+  [64, 0, 512, 2048],
+  [16, 256, 128, 1024],
 ];
 
 function clearBoard() {
@@ -39,7 +41,9 @@ function loose() {
 function checkForLoose() {
   let checker = board[0].concat(board[1], board[2], board[3]);
   if (!checker.includes(0)) {
-    loose();
+    setTimeout(function () {
+      loose();
+    }, 100);
   }
 }
 
@@ -49,6 +53,8 @@ function generateRandomCell() {
   let num = Math.floor(Math.random() * 2 + 1) * 2;
   if (board[row][col] == 0) {
     board[row][col] = num;
+  } else {
+    generateRandomCell();
   }
 }
 
@@ -57,11 +63,10 @@ function generateBoard() {
   generateRandomCell();
   checkForLoose();
 
-  board.forEach((row, rowNum) => {
-    row.forEach((column, colNum) => {
+  board.forEach((row) => {
+    row.forEach((column) => {
       let cell = document.createElement("div");
       cell.classList.add("cell", "cell__number");
-      // cell.id = `${rowNum}${colNum}`;
       cell.classList.add(`cell__number_${column}`);
       cell.textContent = column;
       gamefield.append(cell);
@@ -172,7 +177,7 @@ function moveCellsDown() {
 
 startButton.addEventListener("click", () => {
   openGame();
-  resetGame();
+  generateBoard();
 });
 
 buttonReset.addEventListener("click", resetGame);
@@ -192,3 +197,6 @@ document.addEventListener("keyup", (evt) => {
     moveCellsDown();
   }
 });
+
+openGame();
+generateBoard();
