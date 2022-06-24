@@ -197,6 +197,3 @@ document.addEventListener("keyup", (evt) => {
     moveCellsDown();
   }
 });
-
-openGame();
-generateBoard();
