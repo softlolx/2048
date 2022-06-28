@@ -3,5 +3,10 @@
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  max-width: 1440px;
+  max-width: 1024px;
+
+  /* fixed temporarily to prevent vertical scroll on desctop */
+  position: fixed;
+
+  align-self: center;
 }
