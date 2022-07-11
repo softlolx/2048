@@ -1,4 +1,4 @@
-//Make animations, loose screen design, best score counter
+//Make animations, best score counter
 
 const startButton = document.querySelector(".start-button");
 const rulesBlock = document.querySelector(".rules");
@@ -7,6 +7,7 @@ const gamefield = document.querySelector(".gamefield");
 const actualScore = document.querySelector("#actual-score");
 const buttonInfo = document.querySelector(".board__btn_info");
 const buttonReset = document.querySelector(".board__btn_reset");
+const looseScreen = document.querySelector(".loose");
 
 function openGame() {
   rulesBlock.classList.toggle("rules_hidden");
@@ -33,8 +34,13 @@ function addScore(score) {
 }
 
 function loose() {
-  alert("u lost");
-  openGame();
+  boardBlock.classList.toggle("board_hidden");
+  looseScreen.style.display = "block";
+  setTimeout(function () {
+    boardBlock.classList.toggle("board_hidden");
+    openGame();
+    looseScreen.style.display = "none";
+  }, 2000);
   resetGame();
 }
 

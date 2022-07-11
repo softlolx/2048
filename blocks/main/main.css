@@ -5,7 +5,7 @@
   margin: 0 auto;
   max-width: 1024px;
 
-  /* fixed temporarily to prevent vertical scroll on desctop */
+  /* fixed temporarily to prevent vertical scroll on desktop */
   position: fixed;
 
   align-self: center;
