@@ -1,5 +1,11 @@
 .cell__number_1024 {
   background: #A84924;
-  font-size: 2.25vw;
+  font-size: 2vw;
   transform: scale(1);
+}
+
+@media (max-width: 900px) {
+  .cell__number_1024 {
+    font-size: 22px;
+  }
 }
