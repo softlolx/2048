@@ -8,6 +8,7 @@ const actualScore = document.querySelector("#actual-score");
 const buttonInfo = document.querySelector(".board__btn_info");
 const buttonReset = document.querySelector(".board__btn_reset");
 const looseScreen = document.querySelector(".loose");
+const bestScoreElement = document.querySelector(".header__best-score");
 
 function openGame() {
   rulesBlock.classList.toggle("rules_hidden");
@@ -15,6 +16,7 @@ function openGame() {
 }
 
 let actScore = 0;
+let bestScore = 0;
 
 let board = [
   [0, 0, 0, 2],
@@ -36,6 +38,12 @@ function addScore(score) {
 function loose() {
   boardBlock.classList.toggle("board_hidden");
   looseScreen.style.display = "block";
+
+  if (actScore > bestScore) {
+    bestScore = actScore;
+    bestScoreElement.textContent = `${bestScore}`;
+  }
+
   setTimeout(function () {
     boardBlock.classList.toggle("board_hidden");
     openGame();
