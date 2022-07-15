@@ -1,4 +1,4 @@
-//Make animations, best score counter
+//Make animations
 
 const startButton = document.querySelector(".start-button");
 const rulesBlock = document.querySelector(".rules");
