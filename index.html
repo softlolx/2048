@@ -4,9 +4,54 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="./images/Alecive-Flatwoken-Apps-2048.ico" />
     <link rel="stylesheet" href="./pages/index.css" />
     <title>2048</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./images/Alecive-Flatwoken-Apps-2048.ico"
+    />
   </head>
-  <body class="root"></body>
+  <body class="root">
+    <main class="main">
+      <div class="header">
+        <h1 class="header__logo">2048</h1>
+        <div class="header__score-container">
+          <p class="header__best-score-title">Best</p>
+          <p class="header__best-score" id="best-score">0</p>
+        </div>
+      </div>
+      <div class="rules">
+        <h2 class="rules__title">Rules</h2>
+        <p class="rules__text">
+          The object of the game is to slide tiles on a grid, to combine tiles
+          of the same values ​​and thus create a tile with the number 2048. The
+          player can however continue playing after this objective has been
+          reached to achieve the best possible score.
+        </p>
+        <button type="button" class="start-button">Start a game</button>
+      </div>
+
+      <!-- Game board -->
+
+      <div class="board board_hidden" id="board">
+        <div class="gamefield"></div>
+        <div class="board__text">
+          <div class="board__text-info">Actual score</div>
+          <div class="board__text-score" id="actual-score">0</div>
+        </div>
+        <div class="board__btns">
+          <button class="board__btn board__btn_info"></button>
+          <button class="board__btn board__btn_reset"></button>
+        </div>
+      </div>
+
+      <!-- loose screen -->
+      <div class="loose" id="loose">
+        <h3 class="loose__title">U lost :(</h3>
+      </div>
+    </main>
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/swipe.js"></script>
+  </body>
 </html>

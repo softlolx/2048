@@ -1,0 +1,25 @@
+.start-button {
+  margin: 0;
+  padding: 15px 56px;
+  border: none;
+  align-self: center;
+
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+  color: #24b685;
+
+  background: #022a34;
+  box-shadow: 9.79717e-16px 16px 32px rgba(0, 8, 10, 0.506),
+    inset -4.70264e-16px -7.68px 7.68px #02242c,
+    inset 4.70264e-16px 7.68px 7.68px #022f3a;
+  border-radius: 15px;
+
+  transition: opacity 0.3s;
+}
+
+.start-button:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
