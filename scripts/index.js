@@ -212,3 +212,8 @@ document.addEventListener("keyup", (evt) => {
     moveCellsDown();
   }
 });
+
+document.addEventListener("swiped-left", moveCellsLeft);
+document.addEventListener("swiped-right", moveCellsRight);
+document.addEventListener("swiped-up", moveCellsUp);
+document.addEventListener("swiped-down", moveCellsDown);

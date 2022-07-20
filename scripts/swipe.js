@@ -45,13 +45,3 @@ function handleGesture() {
     gestureZone.addEventListener("touchend", touchEnd);
   }, 300);
 }
-
-// gestureZone.addEventListener(
-//   "touchend",
-//   function (event) {
-//     touchendX = event.changedTouches[0].screenX;
-//     touchendY = event.changedTouches[0].screenY;
-//     handleGesture();
-//   },
-//   false
-// );
