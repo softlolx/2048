@@ -195,6 +195,7 @@ startButton.addEventListener("click", () => {
 });
 
 buttonReset.addEventListener("click", resetGame);
+
 buttonInfo.addEventListener("click", () => {
   openGame();
   resetGame();

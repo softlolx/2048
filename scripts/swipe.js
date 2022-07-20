@@ -5,24 +5,20 @@ let touchendY = 0;
 
 const gestureZone = document.querySelector("#board");
 
-gestureZone.addEventListener(
-  "touchstart",
-  function (event) {
-    touchstartX = event.changedTouches[0].screenX;
-    touchstartY = event.changedTouches[0].screenY;
-  },
-  false
-);
+function touchstart(event) {
+  touchstartX = event.changedTouches[0].screenX;
+  touchstartY = event.changedTouches[0].screenY;
+}
 
-gestureZone.addEventListener(
-  "touchend",
-  function (event) {
-    touchendX = event.changedTouches[0].screenX;
-    touchendY = event.changedTouches[0].screenY;
-    handleGesture();
-  },
-  false
-);
+function touchEnd(event) {
+  touchendX = event.changedTouches[0].screenX;
+  touchendY = event.changedTouches[0].screenY;
+  handleGesture();
+}
+
+gestureZone.addEventListener("touchstart", touchstart);
+
+gestureZone.addEventListener("touchend", touchEnd);
 
 function handleGesture() {
   if (touchendX < touchstartX) {
@@ -40,8 +36,14 @@ function handleGesture() {
   if (touchendY > touchstartY) {
     moveCellsDown();
   }
-
-  if (touchendY === touchstartY) {
-    console.log("Tap");
-  }
 }
+
+// gestureZone.addEventListener(
+//   "touchend",
+//   function (event) {
+//     touchendX = event.changedTouches[0].screenX;
+//     touchendY = event.changedTouches[0].screenY;
+//     handleGesture();
+//   },
+//   false
+// );
