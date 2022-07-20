@@ -6,6 +6,7 @@ let touchendY = 0;
 const gestureZone = document.querySelector("#board");
 
 function touchstart(event) {
+  gestureZone.removeEventListener("touchstart", touchstart);
   touchstartX = event.changedTouches[0].screenX;
   touchstartY = event.changedTouches[0].screenY;
 }
