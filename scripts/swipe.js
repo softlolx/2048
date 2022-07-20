@@ -17,7 +17,7 @@ function touchEnd(event) {
   handleGesture();
 }
 
-gestureZone.addEventListener("touchstart", touchstart, once);
+gestureZone.addEventListener("touchstart", touchstart, { once: true });
 
 gestureZone.addEventListener("touchend", touchEnd);
 
