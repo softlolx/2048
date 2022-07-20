@@ -5,22 +5,22 @@ let touchendY = 0;
 
 const gestureZone = document.querySelector("#board");
 
-function touchstart(event) {
-  gestureZone.removeEventListener("touchstart", touchstart);
-  bestScoreElement.textContent = `${bestScore}`;
+gestureZone.addEventListener("touchstart", touchStart);
+
+gestureZone.addEventListener("touchend", touchEnd);
+
+function touchStart(event) {
+  gestureZone.removeEventListener("touchstart", touchStart);
   touchstartX = event.changedTouches[0].screenX;
   touchstartY = event.changedTouches[0].screenY;
 }
 
 function touchEnd(event) {
+  gestureZone.removeEventListener("touchend", touchEnd);
   touchendX = event.changedTouches[0].screenX;
   touchendY = event.changedTouches[0].screenY;
   handleGesture();
 }
-
-gestureZone.addEventListener("touchstart", touchstart);
-
-gestureZone.addEventListener("touchend", touchEnd);
 
 function handleGesture() {
   if (touchendX < touchstartX) {
@@ -38,6 +38,12 @@ function handleGesture() {
   if (touchendY > touchstartY) {
     moveCellsDown();
   }
+
+  setTimeout(() => {
+    gestureZone.addEventListener("touchstart", touchStart);
+
+    gestureZone.addEventListener("touchend", touchEnd);
+  }, 300);
 }
 
 // gestureZone.addEventListener(
